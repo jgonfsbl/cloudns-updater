@@ -11,6 +11,7 @@ export LOG_FILE = 'iplog.txt'
 export HOSTNAME = 'put.yourhostname.here'
 export SLEEPTIME = 600
 ```
+____Note:____ In order to get your own __URL_CDNS__ you must follow guidance in ClouDNS KB at https://www.cloudns.net/wiki/article/36/.
 
 In Docker, the way to export variables is to define them on the ```docker run``` execution, on a execution line similar to this:
 
