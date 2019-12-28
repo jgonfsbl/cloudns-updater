@@ -36,7 +36,7 @@ def read_ip_from_log_file():
     :return: An IP address, as string.
     """
     try:
-        with open(log_file, 'r') as f:
+        with open(log_file, 'a+') as f:
             lines = f.read().splitlines()
             if not lines:
                 lastline_ip = '0.0.0.0'
