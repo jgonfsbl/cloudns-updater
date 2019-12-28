@@ -36,11 +36,57 @@ docker run \
 ```
 
 ## Docker build command
-```
+### Build standard for the PC/UNIX architecture you are using
+``` 
 docker build \
-    --build-arg VCS_REF=`git rev-parse \
-    --short HEAD` \
-    --build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
-    --build-arg VERSION=v1.0 \
-    -t ea1het/cloudns-updater:v1.0 .
-```
+--build-arg VCS_REF=`git rev-parse --short HEAD` \
+--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
+--build-arg VERSION=v1.0 \
+-t ea1het/cloudns-updater:latest .
+``` 
+### Cross-compilation build sequence
+Cross-compilation is an experimental Docker feature. You can enable it in your Docker Desktop settings. The procedure to cross-compile can be briefly resumed this way:
+
+  1. Ensure cross-compiler is available: ```docker buildx ls```
+  2. Create a new builder instance (a container): ```docker buildx create --name testbuilder```
+  3. Switch to _'testbuilder'_ builder instance: ```docker buildx use testbuilder```
+  4. Ensure _'testbuilder'_ builder is ready to be used: ```docker buildx inspect --bootstrap``` 
+  5. If needed, authenticate against Docker Hub: ```docker login```
+  6. Clone locally the repo you want to cross compile: ```git clone https://.....```
+  7. Finally, execute buildx build sentences for the platform you want to cross-compile. Examples below. 
+
+#### Cross-compilation for ARMv7
+``` 
+docker buildx build \
+--platform linux/arm/v7 \
+--build-arg VCS_REF=`git rev-parse --short HEAD` \
+--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
+--build-arg VERSION=v1.0 \
+-t ea1het/cloudns-updater:latest-armv7 --push .
+``` 
+#### Cross-compilation for ARMv6
+``` 
+docker buildx build \
+--platform linux/arm/v6 \
+--build-arg VCS_REF=`git rev-parse --short HEAD` \
+--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
+--build-arg VERSION=v1.0 \
+-t ea1het/cloudns-updater:latest-armv6 --push .
+``` 
+#### Cross-compilation for ARM64
+``` 
+docker buildx build \
+--platform linux/arm64 \
+--build-arg VCS_REF=`git rev-parse --short HEAD` \
+--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
+--build-arg VERSION=v1.0 \
+-t ea1het/cloudns-updater:latest-arm64 --push .
+``` 
+#### Cross-compilation for AMD64
+``` 
+docker buildx build \
+--platform linux/amd64 \
+--build-arg VCS_REF=`git rev-parse --short HEAD` \
+--build-arg BUILD_DATE=`date -u +"%Y-%m-%d"` \
+--build-arg VERSION=v1.0 \
+-t ea1het/cloudns-updater:latest-amd64 --push .
