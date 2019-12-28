@@ -13,7 +13,7 @@ export SLEEPTIME = 600
 ```
 ____Notes:____ 
 - In this script [IPInfo](https://ipinfo.io) service for IP resolution is used. The URL used returns a JSON with a key named "ip" with an IP address as value. You can change this service provider transparently without altering the code meanwhile a JSON is returned with a key named "ip", in lower case letters, and an IP address is included as value. 
-- In order to get your own __URL_CDNS__ you must follow guidance in ClouDNS KB at https://www.cloudns.net/wiki/article/36/.
+- In order to get the __URL_CDNS__ for your ClouDNS __HOSTNAME__ you must follow guidance in ClouDNS KB at https://www.cloudns.net/wiki/article/36/. Please note __URL_CDNS__ and __HOSTNAME__ are related. Each __HOSTNAME__ in ClouDNS will have a unique __URL_CDNS__. 
 - __SLEEPTIME__ value is seconds, thus, 600 in seconds is 10 minutes. 
 
 ## Docker run command
