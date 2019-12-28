@@ -49,17 +49,18 @@ def read_ip_from_log_file():
         exit(1)
 
 
-def check_actual_ip():
+def check_actual_ip(i):
     """
     Check current apparent IP address and writes log with it.
 
-    :param: None.
+    :param: A counter to print nice information traces in stdout.
     :return: An IP address, as string.
     """
     resp = requests.get(url=url_ipio).json()
     linea_log = str(datetime.utcnow().isoformat(timespec='seconds') + ' (UTC): ' + resp['ip'])
     with open(log_file, 'a') as f:
         f.write(linea_log + '\r\n')
+    print(linea_log + ' (# %s) ' % i)
     return resp['ip']
 
 
@@ -73,26 +74,23 @@ def update_ip(ip):
     ip_in_cdns = socket.gethostbyname(hostname)
 
     if ip_in_cdns == ip:
-        print('Actual IP is the same than ClouDNS. ClouDNS update call not executed.')
+        print('Update: Actual IP is the same than ClouDNS. ClouDNS update call not executed.')
     else:
         try:
             requests.get(url=url_cdns, timeout=(2, 10))
-            print('IP updated in ClouDNS')
+            print('Update: IP updated in ClouDNS')
         except Exception as e:
             print('Error %s' % e)
             exit(1)
 
 
 def main():
+    counter = 0
     while True:
         try:
-            # Step 1: Obtain last saved IP from log file.
+            counter += 1
             ip_prev = read_ip_from_log_file()
-            print(ip_prev)
-            # Step 2: Check actual IP and save it.
-            ip_now = check_actual_ip()
-            print(ip_now)
-            # Step 3: IP update routine execution
+            ip_now = check_actual_ip(counter)
             if ip_prev != ip_now:
                 update_ip(ip_now)
         except Exception as e:
