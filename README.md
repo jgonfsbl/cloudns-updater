@@ -11,8 +11,10 @@ export LOG_FILE = 'iplog.txt'
 export HOSTNAME = 'put.yourhostname.here'
 export SLEEPTIME = 600
 ```
-____Note:____ In order to get your own __URL_CDNS__ you must follow guidance in ClouDNS KB at https://www.cloudns.net/wiki/article/36/.
-
+____Notes:____ 
+- In this script [IPInfo](https://ipinfo.io) service for IP resolution is used. The URL used returns a JSON with a key named "ip" with an IP address as value. You can change this service provider transparently without altering the code meanwhile a JSON is returned with a key named "ip", in lower case letters, and an IP address is included as value. 
+- In order to get your own __URL_CDNS__ you must follow guidance in ClouDNS KB at https://www.cloudns.net/wiki/article/36/.
+- __SLEEPTIME__ value is seconds, thus, 600 in seconds is 10 minutes. 
 
 ## Docker run command
 In Docker, the way to export variables is to define them on the ```docker run``` execution, on a execution line similar to this:
