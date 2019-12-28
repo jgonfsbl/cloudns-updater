@@ -16,6 +16,10 @@ ____Notes:____
 - In order to get the __URL_CDNS__ for your ClouDNS __HOSTNAME__ you must follow guidance in ClouDNS KB at https://www.cloudns.net/wiki/article/36/. Please note __URL_CDNS__ and __HOSTNAME__ are related. Each __HOSTNAME__ in ClouDNS will have a unique __URL_CDNS__. 
 - __SLEEPTIME__ value is seconds, thus, 600 in seconds is 10 minutes. 
 
+## Link to the Docker Hub repository
+- Repository: https://hub.docker.com/r/ea1het/cloudns-updater
+- Alternatively you can pull directly from docker CLI with ```docker pull ea1het/cloudns-updater ``` 
+
 ## Docker run command
 In Docker, the way to export variables is to define them on the ```docker run``` execution, on a execution line similar to this:
 
