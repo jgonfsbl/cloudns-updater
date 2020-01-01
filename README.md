@@ -34,9 +34,9 @@ docker run \
     -e SLEEPTIME=600 \
     ea1het/cloudns-updater:latest 
 ```
-__Note:__ It can happen that you cannot see logs from the docker container while it's running. This is caused due to Python buffered output. In order to see logs from the container buffered output must be disabled for the container. This can be done in two ways, a) setting an environment variable or b) using a modifier for the Python interpreter. These are the different options:
-  - Environment variable: set ```PYTHONUNBUFFERED=0``` in the container execution. 
-  - Interpreter modifier: use ```python -u app.py``` or its equivalente in the Dockerfile:
+__Note:__ It can happen that you cannot see logs from the docker container while it's in execution. This is caused due to Python buffered output. In order to see logs from the container buffered output must be disabled for this specific container. This can be done in two ways, a) setting an environment variable or b) using a modifier for the Python interpreter. The prefered option is the first because it doesn't imply modifying the container. In any case, for the sake of the explanation, following are the options explained:
+  - Environment variable: set ```PYTHONUNBUFFERED=0``` in the container execution command (in CLI or in a UI like Portainer).
+  - Interpreter modifier: use ```python -u app.py``` inside the container (in development or in run time) or craft the appropiate changes in the Dockerfile:
     ```
     ENTRYPOINT ["python3"]
     CMD ["-u", "app.py"]
