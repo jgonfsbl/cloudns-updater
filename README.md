@@ -15,7 +15,7 @@ ____Notes:____
 - In this script [IPInfo](https://ipinfo.io) service for IP resolution is used. The URL used returns a JSON with a key named "ip" with an IP address as value. You can change this service provider transparently without altering the code meanwhile a JSON is returned with a key named "ip", in lower case letters, and an IP address is included as value. 
 - In order to get the __URL_CDNS__ for your ClouDNS __HOSTNAME__ you must follow guidance in ClouDNS KB at https://www.cloudns.net/wiki/article/36/. Please note __URL_CDNS__ and __HOSTNAME__ are related. Each __HOSTNAME__ in ClouDNS will have a unique __URL_CDNS__. 
 - __SLEEPTIME__ value is seconds, thus, 600 in seconds is 10 minutes. 
-- It can happen that you cannot see logs from the docker container while it's running. This is caused due to Python buffered output. In order to see logs from the container buffered output must be disabled for the container. This can be done in two ways, a) setting an environment variable or b) using a modifier for the Python interpreter. These are the 
+- It can happen that you cannot see logs from the docker container while it's running. This is caused due to Python buffered output. In order to see logs from the container buffered output must be disabled for the container. This can be done in two ways, a) setting an environment variable or b) using a modifier for the Python interpreter. These are the different options:
   - Environment variable: set ```PYTHONUNBUFFERED=0``` in the container execution. 
   - Interpreter modifier: use ```python -u app.py``` or its equivalente in the Dockerfile:
     ```
