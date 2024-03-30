@@ -5,7 +5,7 @@
 
 """ ClouDNS updater script for container format. Settings file. """
 
-__author__ = 'EA1HET'
+__author__ = 'safebytelabs-jgonf'
 __date__ = "27/12/2019"
 
 from os import environ, path
