@@ -1,17 +1,17 @@
 FROM alpine:3.9
-MAINTAINER Jonathan Gonzalez https://0x30.io
+MAINTAINER Jonathan Gonzalez https:/safebytelabs.com
 
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
 
-LABEL maintainer="Jonathan Gonzalez <j@0x30.io>" \
+LABEL maintainer="Jonathan Gonzalez <jgonf@safebytelabs.com>" \
       org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="ClouDNS-Updater" \
       org.label-schema.description="This project builds a ClouDNS updater client." \
-      org.label-schema.url="https://hub.docker.com/r/ea1het/cloudns-updater" \
+      org.label-schema.url="https://hub.docker.com/r/safebytelabsjgonf/cloudns-updater" \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://hub.docker.com/r/ea1het/cloudns-updater" \
+      org.label-schema.vcs-url="https://hub.docker.com/r/safebytelabsjgonf/cloudns-updater" \
       org.label-schema.version=$VERSION \
       org.label-schema.schema-version="1.0"
 
